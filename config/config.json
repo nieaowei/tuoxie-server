@@ -1,0 +1,21 @@
+{
+  "server":{
+    "user_addr": "localhost:8080",
+    "data_save_addr":"localhost:8080",
+    "data_calculation":"localhost:8080"
+  },
+  "mysql": {
+    "driver": "mysql",
+    "name": "root",
+    "password": "nieaowei",
+    "table": "tuoxie",
+    "dataSource": "localhost:3306"
+  },
+  "tdengine":{
+    "driver": "taosSql",
+    "name": "root",
+    "password": "nieaowei",
+    "table": "none",
+    "dataSource": "localhost:33066"
+  }
+}
