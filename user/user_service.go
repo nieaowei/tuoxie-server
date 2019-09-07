@@ -9,47 +9,8 @@ package user
 import (
 	"regexp"
 	"tuoxie-user-handle-service/commons"
+	"tuoxie-user-handle-service/data"
 )
-
-/*
-	This method will be not used.
-*/
-func loginService(usern, pwd string) (res commons.Result) {
-	user := selectByPwd(usern, pwd)
-	if user != nil { //查询到数据
-		res.Status = 200
-	} else { //没有数据
-		res.Status = 400
-	}
-	return
-}
-
-//func registerService(username, pwd, phone,email string) (res commons.Result) {
-//	//首先验证是否符合要求
-//	if !matchPhone(phone) {
-//		res.Status = 200
-//		return
-//	}
-//	if !matchEmail(email) {
-//		res.Status = 400
-//		return
-//	}
-//
-//	//如果都符合要求继续执行注册
-//	err := addUserByUPP(username, pwd, phone,email)
-//	if err != 0 {
-//		res.Status = 400
-//		return
-//	} else {
-//		res.Status = 200
-//		return
-//	}
-//}
-
-func matchPhone(phone string) (res bool) {
-	res, _ = regexp.MatchString(`^(1[3|4|5|6|7|8|9][0-9][\d]{8})$`, phone)
-	return
-}
 
 /*
 	To verify that the user's account and password match.
@@ -91,6 +52,12 @@ func (u *User) RegisterVerify() (res commons.Result) {
 		}
 		return
 	}
+	result := data.CreateTableToUser(u.Username)
+	if result != 0 {
+		res.Status = 400
+		res.Msg = "no known error"
+		return
+	}
 	res.Status = 200
 	return
 }
@@ -102,3 +69,15 @@ func (u *User) MatchPhone() (res bool) {
 	res, _ = regexp.MatchString(`^(1[3|4|5|6|7|8|9][0-9][\d]{8})$`, u.Phone)
 	return
 }
+
+/*
+	get last location
+*/
+func (u *User) getLastGPS() (res commons.Result) {
+
+	return
+}
+
+/*
+
+ */

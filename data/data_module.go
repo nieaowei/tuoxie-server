@@ -8,12 +8,15 @@ package data
 
 //GPS data packet
 type DataGPS struct {
+	Time      string
+	longitude float32
+	latitude  float32
 }
 
 //Three-axis accelerometer data packet
 type DataThree_axis struct {
 	Time string
-	X    int
-	Y    int
-	Z    int
+	X    float32
+	Y    float32
+	Z    float32
 }

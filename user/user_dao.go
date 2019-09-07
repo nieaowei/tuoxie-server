@@ -85,6 +85,7 @@ func addUserByUPP(u *User) int8 {
 	timeStr := time.Now().Format("2006-01-02 15:04:05")
 	lenth, err := commons.MySqlDB.Dml(sql, u.Username, u.Password, u.Phone, timeStr, timeStr)
 	if err != nil { //解析错误
+		fmt.Println(err)
 		r, _ := regexp.Compile("'[a-zA-Z0-9]+'")
 		temp := r.FindAllString(fmt.Sprintf("%s", err), 2)
 		switch temp[len(temp)-1] {

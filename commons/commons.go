@@ -38,9 +38,10 @@ type MyDataBase struct {
 
 //打开数据库链接
 func (this *MyDataBase) openConn() (err error) {
-	this.dB, err = sql.Open("mysql", this.Name+":"+this.Password+"@tcp("+this.DataSource+")/"+this.Table)
+	this.dB, err = sql.Open(this.Driver, this.Name+":"+this.Password+"@tcp("+this.DataSource+")/"+this.Table)
 	if err != nil {
 		//@TODO 实现日志文件记录
+		fmt.Println("open database fail.")
 		return
 	}
 	return nil
@@ -66,21 +67,25 @@ func (this *MyDataBase) Dml(sql string, args ...interface{}) (lenth int64, err e
 	defer this.CloseConn()
 	if err != nil {
 		//@TODO 日志
+		fmt.Println("open database fail")
 		return
 	}
 	this.stmt, err = this.dB.Prepare(sql)
 	if err != nil {
 		//@TODO
+		fmt.Println("prepare fail")
 		return
 	}
 	result, err := this.stmt.Exec(args...)
 	if err != nil {
 		//@TODO
+		fmt.Println("exec fail")
 		return
 	}
 	lenth, err = result.RowsAffected()
 	if err != nil {
 		//@todo
+		fmt.Println("no res")
 		return
 	}
 	return
