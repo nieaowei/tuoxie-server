@@ -12,25 +12,26 @@ import (
 	"fmt"
 	"time"
 	"tuoxie-user-handle-service/config"
+	_ "tuoxie-user-handle-service/taosSql"
 )
 
 //默认数据库初始化
-//func init() {
-//	err := TdDBConfigInit()
-//	if err != nil {
-//		//@todo
-//		return
-//	}
-//}
-
-//默认数据库初始化
-func TdDBConfigInit() (err error) {
-	data, err := json.Marshal(config.GetConfigData("taosSql"))
+func init() {
+	err := TdDBConfigInit()
 	if err != nil {
 		//@todo
 		return
 	}
-	err = json.Unmarshal(data, MySqlDB)
+}
+
+//默认数据库初始化
+func TdDBConfigInit() (err error) {
+	data, err := json.Marshal(config.GetConfigData("tdengine"))
+	if err != nil {
+		//@todo
+		return
+	}
+	err = json.Unmarshal(data, TdDB)
 	if err != nil {
 		return
 	}

@@ -30,7 +30,7 @@ func readConfig() (err error) {
 	data, err := ioutil.ReadFile("./config/config.json")
 	if err != nil {
 		//@todo
-		data, err = ioutil.ReadFile("../../config/config.json") //Used during testing.
+		data, err = ioutil.ReadFile("../config/config.json") //Used during testing.
 		if err != nil {
 			data, err = ioutil.ReadFile("./config.json") //Used during testing.
 			if err != nil {

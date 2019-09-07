@@ -14,6 +14,6 @@ type DataGPS struct {
 type DataThree_axis struct {
 	Time string
 	X    int
-	y    int
+	Y    int
 	Z    int
 }

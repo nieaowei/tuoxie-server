@@ -18,8 +18,8 @@ Query data in the database by account number and password .
 Return nil if the query has an error or the data does not exist.
 */
 func selectByPwd(usern, pwd string) (user *User) {
-	sql := "select * from tb_user where username=? and password=? or phone=? and password=?"
-	rows, err := commons.MySqlDB.Dql(sql, usern, pwd, usern, pwd, usern, pwd)
+	sql := "select * from user where username=? and password=? or phone=? and password=?"
+	rows, err := commons.MySqlDB.Dql(sql, usern, pwd, usern, pwd)
 	if err != nil {
 		//@todo
 		return
@@ -81,7 +81,7 @@ func addUserByUPP(u *User) int8 {
 
 	// The following code implements the function of error location bt analyzing the error information.
 	//And improve operational efficiency.
-	sql := "insert into tb_user values(default,?,?,?,?,?,?)"
+	sql := "insert into user values(default,?,?,?,?,?)"
 	timeStr := time.Now().Format("2006-01-02 15:04:05")
 	lenth, err := commons.MySqlDB.Dml(sql, u.Username, u.Password, u.Phone, timeStr, timeStr)
 	if err != nil { //解析错误

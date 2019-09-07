@@ -14,8 +14,8 @@
   "tdengine":{
     "driver": "taosSql",
     "name": "root",
-    "password": "nieaowei",
-    "table": "none",
-    "dataSource": "localhost:33066"
+    "password": "taosdata",
+    "table": "t",
+    "dataSource": "47.100.62.192:0"
   }
 }
