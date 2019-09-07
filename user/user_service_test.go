@@ -80,9 +80,9 @@ func TestUser_RegisterVerify(t *testing.T) {
 			"register test",
 			fields{
 				ID:       0,
-				Username: "1nieaowei",
+				Username: "test4",
 				Password: "nieaowei",
-				Phone:    "13323231212",
+				Phone:    "13326231212",
 				Created:  "",
 				Updated:  "",
 			},

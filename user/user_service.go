@@ -73,8 +73,13 @@ func (u *User) MatchPhone() (res bool) {
 /*
 	get last location
 */
-func (u *User) getLastGPS() (res commons.Result) {
-
+func (u *User) GetLastGPS() (res commons.Result) {
+	gpsinfo := data.SelectLastGPSData(u.Username)
+	res.Status = 400
+	if gpsinfo != nil {
+		res.Data = 200
+		res.Data = gpsinfo
+	}
 	return
 }
 
