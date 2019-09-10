@@ -16,6 +16,6 @@
     "name": "root",
     "password": "taosdata",
     "table": "tuoxie",
-    "dataSource": "localhost:0"
+    "dataSource": "172.18.0.1:0"
   }
 }
