@@ -6,4 +6,5 @@ ADD . tuoxie-user-handle-service
 WORKDIR tuoxie-user-handle-service
 RUN go build main.go
 EXPOSE 8080
+COPY libtaos.so.1 /usr/lib
 ENTRYPOINT ["./main"]
