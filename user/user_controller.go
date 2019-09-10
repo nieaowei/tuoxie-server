@@ -21,6 +21,7 @@ func UserHandler() {
 
 func getLastGPSController(w http.ResponseWriter, r *http.Request) {
 	username := r.FormValue("username")
+	fmt.Println("[getGOS]:" + username)
 	user := User{
 		ID:       0,
 		Username: username,

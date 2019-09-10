@@ -7,6 +7,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"tuoxie-user-handle-service/commons"
 	"tuoxie-user-handle-service/config"
@@ -15,6 +16,7 @@ import (
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r)
 	w.Write([]byte("The User server is started."))
 }
 
