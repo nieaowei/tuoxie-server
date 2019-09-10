@@ -6,4 +6,4 @@ ADD . tuoxie-user-handle-service
 WORKDIR tuoxie-user-handle-service
 RUN go build .
 EXPOSE 8080
-ENTRYPOINT ["./main"]
+ENTRYPOINT ["./tuoxie-user-handle-service/main"]
