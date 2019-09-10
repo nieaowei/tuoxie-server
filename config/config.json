@@ -1,6 +1,6 @@
 {
   "server":{
-    "user_addr": "47.100.62.192:8080",
+    "user_addr": "0.0.0.0:8080",
     "data_save_addr":"localhost:8080",
     "data_calculation":"localhost:8080"
   },
