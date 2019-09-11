@@ -9,13 +9,13 @@
     "name": "root",
     "password": "Nieaowei3.",
     "table": "tuoxie",
-    "dataSource": "127.18.0.1:3306"
+    "dataSource": "172.18.0.1:3306"
   },
   "tdengine":{
     "driver": "taosSql",
     "name": "root",
     "password": "taosdata",
     "table": "tuoxie",
-    "dataSource": "127.18.0.1:0"
+    "dataSource": "172.18.0.1:0"
   }
 }
