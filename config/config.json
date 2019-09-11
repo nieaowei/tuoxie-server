@@ -7,7 +7,7 @@
   "mysql": {
     "driver": "mysql",
     "name": "root",
-    "password": "nieaowei",
+    "password": "Nieaowei3.",
     "table": "tuoxie",
     "dataSource": "127.18.0.1:3306"
   },
