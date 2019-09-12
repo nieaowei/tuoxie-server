@@ -25,8 +25,8 @@ func postInfoController(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(longitude, latitude)
 		addOneData_GPS(r.FormValue("username"), DataGPS{
 			Time:      "",
-			Longitude: longitude * 100,
-			Latitude:  latitude * 100,
+			Longitude: longitude / 100,
+			Latitude:  latitude / 100,
 		})
 	case "data_three":
 		x, _ := strconv.ParseFloat(r.FormValue("x"), 5)
