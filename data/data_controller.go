@@ -22,6 +22,9 @@ func postInfoController(w http.ResponseWriter, r *http.Request) {
 	case "data_gps":
 		longitude, _ := strconv.ParseFloat(r.FormValue("longitude"), 64)
 		latitude, _ := strconv.ParseFloat(r.FormValue("latitude"), 64)
+		if longitude == 0 && latitude == 0 {
+			return
+		}
 		fmt.Println(longitude, latitude)
 		addOneData_GPS(r.FormValue("username"), DataGPS{
 			Time:      "",
@@ -29,9 +32,9 @@ func postInfoController(w http.ResponseWriter, r *http.Request) {
 			Latitude:  latitude / 100,
 		})
 	case "data_three":
-		x, _ := strconv.ParseFloat(r.FormValue("x"), 5)
-		y, _ := strconv.ParseFloat(r.FormValue("y"), 5)
-		z, _ := strconv.ParseFloat(r.FormValue("z"), 5)
+		x, _ := strconv.ParseFloat(r.FormValue("x"), 32)
+		y, _ := strconv.ParseFloat(r.FormValue("y"), 32)
+		z, _ := strconv.ParseFloat(r.FormValue("z"), 32)
 		fmt.Println(x, y, z)
 		addOneData_Threeaxis(r.FormValue("username"), DataThree_axis{
 			Time: "",
