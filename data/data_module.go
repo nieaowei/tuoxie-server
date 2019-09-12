@@ -9,8 +9,8 @@ package data
 //GPS data packet
 type DataGPS struct {
 	Time      string  `json:"time"`
-	Longitude float32 `json:"longitude"`
-	Latitude  float32 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+	Latitude  float64 `json:"latitude"`
 }
 
 //Three-axis accelerometer data packet
