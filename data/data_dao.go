@@ -63,7 +63,7 @@ func CreateTableToUser(username string) (res int8) {
 	if result == 0 {
 		return -1
 	}
-	sqlStr = "create table gps_" + username + "(uploadtime TIMESTAMP, Longitude float, Latitude float)"
+	sqlStr = "create table gps_" + username + "(uploadtime TIMESTAMP, Longitude double, Latitude double)"
 	result, err = commons.TdDB.Dml(sqlStr)
 	if err != nil {
 		return -1
