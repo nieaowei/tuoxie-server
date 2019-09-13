@@ -26,4 +26,4 @@ RUN cd taos-1.6.1.7-linux-2019-08-22-17-35 && ./install_client.sh &&\
 RUN /usr/local/go/bin/go build main.go
 EXPOSE 8080
 
-ENTRYPOINT ["./main -type=user"]
+ENTRYPOINT ["./main","-type=user"]
