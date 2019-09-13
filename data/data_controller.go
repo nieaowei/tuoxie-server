@@ -8,6 +8,7 @@ package data
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 	"tuoxie-server/commons"
@@ -36,12 +37,16 @@ func postInfoController(w http.ResponseWriter, r *http.Request) {
 		x, _ := strconv.Atoi(r.FormValue("x"))
 		y, _ := strconv.Atoi(r.FormValue("y"))
 		z, _ := strconv.Atoi(r.FormValue("z"))
-		fmt.Println(x, y, z)
+		x1 := sensor.GetAccelVal(x)
+		y1 := sensor.GetAccelVal(y)
+		z1 := sensor.GetAccelVal(z)
+		log.SetPrefix("Three")
+		log.Println(x1, y1, z1)
 		addOneData_Threeaxis(r.FormValue("username"), DataThree_axis{
 			Time: "",
-			X:    sensor.GetAccelVal(x),
-			Y:    sensor.GetAccelVal(y),
-			Z:    sensor.GetAccelVal(z),
+			X:    x1,
+			Y:    y1,
+			Z:    z1,
 		})
 	}
 }

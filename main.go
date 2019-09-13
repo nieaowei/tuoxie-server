@@ -40,6 +40,7 @@ func main() {
 		}
 	case "datahandle":
 		{
+			data.DataCaculateHandler()
 			*addr = config.GetConfigData("server")["data_calculation"].(string)
 			fmt.Println("The data calculation server is started.")
 		}
