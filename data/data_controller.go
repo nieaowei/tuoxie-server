@@ -9,6 +9,7 @@ package data
 import (
 	"fmt"
 	"log"
+	"math"
 	"net/http"
 	"strconv"
 	"tuoxie-server/commons"
@@ -48,5 +49,10 @@ func postInfoController(w http.ResponseWriter, r *http.Request) {
 			Y:    y1,
 			Z:    z1,
 		})
+		result := math.Sqrt(math.Pow(float64(x1), 2) + math.Pow(float64(y1), 2) + math.Pow(float64(z1), 2))
+		if result > 1.8 {
+			temp := SelectLastGPSData(r.FormValue("username"))
+			addOneData_Fall(r.FormValue("username"), temp)
+		}
 	}
 }

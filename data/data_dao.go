@@ -50,6 +50,18 @@ func addOneData_Threeaxis(username string, data DataThree_axis) (res int8) {
 	return
 }
 
+func addOneData_Fall(username string, data *DataGPS) (res int8) {
+	sqlStr := "insert into ? values(?,?,?)"
+	result, err := commons.TdDB.Dml(sqlStr, "fall_"+username, 0, data.Longitude, data.Latitude)
+	if err != nil {
+		return -1
+	}
+	if result == 0 {
+		return -1
+	}
+	return
+}
+
 /*
 	Create two table in database according to User's username.
 */
@@ -71,10 +83,33 @@ func CreateTableToUser(username string) (res int8) {
 	if result == 0 {
 		return -1
 	}
+	sqlStr = "create table fall_" + username + "(uploadtime TIMESTAMP, Longitude double, Latitude double)"
+	result, err = commons.TdDB.Dml(sqlStr)
+	if err != nil {
+		return -1
+	}
+	if result == 0 {
+		return -1
+	}
 	return
 }
 
 func SelectLastGPSData(username string) (res *DataGPS) {
+	defer commons.TdDB.CloseConn()
+	sqlStr := "select last(*) from gps_" + username
+	rows, err := commons.TdDB.Dql(sqlStr)
+	if err != nil {
+		return
+	}
+	if rows.Next() {
+		res = new(DataGPS)
+		rows.Scan(&res.Time, &res.Longitude, &res.Latitude)
+		fmt.Println(res)
+	}
+	return
+}
+
+func SelectLastFallData(username string) (res *DataGPS) {
 	defer commons.TdDB.CloseConn()
 	sqlStr := "select last(*) from gps_" + username
 	rows, err := commons.TdDB.Dql(sqlStr)

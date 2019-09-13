@@ -86,3 +86,13 @@ func (u *User) GetLastGPS() (res commons.Result) {
 /*
 
  */
+
+func (u *User) GetLastFall() (res commons.Result) {
+	gpsinfo := data.SelectLastFallData(u.Username)
+	res.Status = 400
+	if gpsinfo != nil {
+		res.Status = 200
+		res.Data = gpsinfo
+	}
+	return
+}

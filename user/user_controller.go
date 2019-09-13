@@ -17,11 +17,30 @@ func UserHandler() {
 	commons.MainRouter.HandleFunc("/login", loginController)
 	commons.MainRouter.HandleFunc("/register", registerController)
 	commons.MainRouter.HandleFunc("/getLastGPS", getLastGPSController)
+	commons.MainRouter.HandleFunc("/getLastFall", getLastFallController)
+}
+
+func getLastFallController(w http.ResponseWriter, r *http.Request) {
+	username := r.FormValue("username")
+	fmt.Println("[getGPS]:" + username)
+	user := User{
+		ID:       0,
+		Username: username,
+		Password: "",
+		Phone:    "",
+		Created:  "",
+		Updated:  "",
+	}
+	res := user.GetLastFall()
+	data, _ := json.Marshal(res)
+	w.Header().Set("Content-Type", "application/json;charset=utf-8")
+	w.Write(data)
+
 }
 
 func getLastGPSController(w http.ResponseWriter, r *http.Request) {
 	username := r.FormValue("username")
-	fmt.Println("[getGOS]:" + username)
+	fmt.Println("[getGPS]:" + username)
 	user := User{
 		ID:       0,
 		Username: username,
