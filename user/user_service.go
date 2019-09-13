@@ -8,8 +8,8 @@ package user
 
 import (
 	"regexp"
-	"tuoxie-user-handle-service/commons"
-	"tuoxie-user-handle-service/data"
+	"tuoxie-server/commons"
+	"tuoxie-server/data"
 )
 
 /*

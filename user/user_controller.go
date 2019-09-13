@@ -10,7 +10,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"tuoxie-user-handle-service/commons"
+	"tuoxie-server/commons"
 )
 
 func UserHandler() {

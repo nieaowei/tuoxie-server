@@ -7,12 +7,13 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"net/http"
-	"tuoxie-user-handle-service/commons"
-	"tuoxie-user-handle-service/config"
-	"tuoxie-user-handle-service/data"
-	"tuoxie-user-handle-service/user"
+	"tuoxie-server/commons"
+	"tuoxie-server/config"
+	"tuoxie-server/data"
+	"tuoxie-server/user"
 )
 
 func index(w http.ResponseWriter, r *http.Request) {
@@ -22,7 +23,26 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	commons.MainRouter.HandleFunc("/", index)
-	user.UserHandler()
-	data.DataHandler()
-	http.ListenAndServe(config.GetConfigData("server")["user_addr"].(string), commons.MainRouter)
+	addr := flag.String("type", "user", "this is user server.")
+	switch *addr {
+	case "user":
+		{
+			user.UserHandler()
+			*addr = config.GetConfigData("server")["user_addr"].(string)
+			fmt.Println("The user handle server is started.")
+		}
+	case "datasave":
+		{
+			data.DataSaveHandler()
+			*addr = config.GetConfigData("server")["data_save_addr"].(string)
+			fmt.Println("The data saving server is started.")
+		}
+	case "datahandle":
+		{
+			*addr = config.GetConfigData("server")["data_calculation"].(string)
+			fmt.Println("The data calculation server is started.")
+		}
+	}
+
+	http.ListenAndServe(*addr, commons.MainRouter)
 }

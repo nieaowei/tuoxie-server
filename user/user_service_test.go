@@ -9,7 +9,7 @@ package user
 import (
 	"reflect"
 	"testing"
-	"tuoxie-user-handle-service/commons"
+	"tuoxie-server/commons"
 )
 
 func TestUser_LoginVerify(t *testing.T) {

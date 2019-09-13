@@ -9,7 +9,7 @@ package commons
 import (
 	"encoding/json"
 	_ "github.com/go-sql-driver/mysql"
-	"tuoxie-user-handle-service/config"
+	"tuoxie-server/config"
 )
 
 //默认数据库初始化

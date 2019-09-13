@@ -11,8 +11,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"time"
-	"tuoxie-user-handle-service/config"
-	_ "tuoxie-user-handle-service/taosSql"
+	"tuoxie-server/config"
+	_ "tuoxie-server/taosSql"
 )
 
 //默认数据库初始化

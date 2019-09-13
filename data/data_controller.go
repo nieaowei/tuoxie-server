@@ -10,10 +10,11 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"tuoxie-user-handle-service/commons"
+	"tuoxie-server/commons"
+	"tuoxie-server/sensor"
 )
 
-func DataHandler() {
+func DataSaveHandler() {
 	commons.MainRouter.HandleFunc("/postinfo", postInfoController)
 }
 
@@ -32,15 +33,15 @@ func postInfoController(w http.ResponseWriter, r *http.Request) {
 			Latitude:  latitude / 100,
 		})
 	case "data_three":
-		x, _ := strconv.ParseFloat(r.FormValue("x"), 32)
-		y, _ := strconv.ParseFloat(r.FormValue("y"), 32)
-		z, _ := strconv.ParseFloat(r.FormValue("z"), 32)
+		x, _ := strconv.Atoi(r.FormValue("x"))
+		y, _ := strconv.Atoi(r.FormValue("y"))
+		z, _ := strconv.Atoi(r.FormValue("z"))
 		fmt.Println(x, y, z)
 		addOneData_Threeaxis(r.FormValue("username"), DataThree_axis{
 			Time: "",
-			X:    float32(x),
-			Y:    float32(y),
-			Z:    float32(z),
+			X:    sensor.GetAccelVal(x),
+			Y:    sensor.GetAccelVal(y),
+			Z:    sensor.GetAccelVal(z),
 		})
 	}
 }

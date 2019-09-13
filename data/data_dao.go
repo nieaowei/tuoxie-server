@@ -2,7 +2,7 @@ package data
 
 import (
 	"fmt"
-	"tuoxie-user-handle-service/commons"
+	"tuoxie-server/commons"
 )
 
 //Read three-axis accelerometer data from the specified table
