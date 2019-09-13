@@ -50,6 +50,8 @@ func postInfoController(w http.ResponseWriter, r *http.Request) {
 			Z:    z1,
 		})
 		result := math.Sqrt(math.Pow(float64(x1), 2) + math.Pow(float64(y1), 2) + math.Pow(float64(z1), 2))
+		log.SetPrefix("Three_result")
+		log.Println(result)
 		if result > 1.8 {
 			temp := SelectLastGPSData(r.FormValue("username"))
 			addOneData_Fall(r.FormValue("username"), temp)
