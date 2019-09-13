@@ -24,6 +24,7 @@ func index(w http.ResponseWriter, r *http.Request) {
 func main() {
 	commons.MainRouter.HandleFunc("/", index)
 	addr := flag.String("type", "user", "this is user server.")
+	flag.Parse()
 	switch *addr {
 	case "user":
 		{
