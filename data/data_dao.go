@@ -111,7 +111,7 @@ func SelectLastGPSData(username string) (res *DataGPS) {
 
 func SelectLastFallData(username string) (res *DataGPS) {
 	defer commons.TdDB.CloseConn()
-	sqlStr := "select last(*) from gps_" + username
+	sqlStr := "select last(*) from fall_" + username
 	rows, err := commons.TdDB.Dql(sqlStr)
 	if err != nil {
 		return
